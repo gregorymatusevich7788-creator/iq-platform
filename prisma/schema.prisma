@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id         String   @id
+  email      String?
+  fullName   String?
+  isPremium  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  results    TestResult[]
+}
+
+model TestResult {
+  id             String   @id @default(uuid())
+  profileId      String?
+  profile        Profile? @relation(fields: [profileId], references: [id])
+  iq             Int
+  percentile     Float
+  category       String
+  patternScore   Float
+  logicScore     Float
+  numericalScore Float
+  spatialScore   Float
+  correctCount   Int
+  totalQuestions Int
+  timeTaken      Int
+  isUnlocked     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
