@@ -4,3 +4,8 @@ node_modules
 
 /generated/prisma
 .vercel
+node_modules/
+.next/
+.env.local
+.DS_Store
+--force
