@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
-const BASE_URL = 'https://neuro-index.vercel.app'
+const BASE_URL = 'https://iqhero.app'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Free IQ Test Online — Accurate Results in 20 Minutes | Neuro Index',
-    template: '%s | Neuro Index',
+    default: 'Free IQ Test Online — Accurate Results in 20 Minutes | IqHero',
+    template: '%s | IqHero',
   },
   description: 'Take our free certified IQ test online. Get instant results, see your percentile, and compare your score to 2 million Americans. 30 questions, scientifically validated.',
   keywords: [
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     'IQ test for adults', 'free intelligence test', 'brain test online',
     'cognitive ability test', 'IQ percentile', 'genius IQ test',
   ],
-  authors: [{ name: 'Neuro Index', url: BASE_URL }],
-  creator: 'Neuro Index',
-  publisher: 'Neuro Index',
+  authors: [{ name: 'IqHero', url: BASE_URL }],
+  creator: 'IqHero',
+  publisher: 'IqHero',
   category: 'Education',
   classification: 'Educational Assessment',
   robots: {
@@ -39,26 +39,31 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'Free IQ Test Online — Neuro Index',
+    title: 'Free IQ Test Online — IqHero',
     description: 'Discover your true IQ score in 20 minutes. Scientifically validated, trusted by 2M+ Americans. Free, instant results.',
     type: 'website',
     url: BASE_URL,
-    siteName: 'Neuro Index',
+    siteName: 'IqHero',
     locale: 'en_US',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Neuro Index — Free IQ Test Online',
+        alt: 'IqHero — Free IQ Test Online',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free IQ Test Online — Neuro Index',
+    title: 'Free IQ Test Online — IqHero',
     description: 'Discover your true IQ score in 20 minutes. Free, scientifically validated.',
     images: ['/og-image.png'],
+  },
+  icons: {
+    icon: "/brand/favicon.svg",
+    apple: "/brand/favicon.svg",
+    shortcut: "/brand/favicon.svg",
   },
   verification: {
     google: 'sFapcmySD3vuBmhTKZ3Hu4WypfwF4tCH-P-C9cjwKmc',
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
-    'apple-mobile-web-app-title': 'Neuro Index',
+    'apple-mobile-web-app-title': 'IqHero',
     'mobile-web-app-capable': 'yes',
     'format-detection': 'telephone=no',
   },
@@ -75,7 +80,7 @@ export const metadata: Metadata = {
 const jsonLdWebApp = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'Neuro Index IQ Test',
+  name: 'IqHero IQ Test',
   url: BASE_URL,
   description: 'Free online IQ test with instant results. Scientifically validated, 30 questions across 4 cognitive domains.',
   applicationCategory: 'EducationalApplication',
@@ -108,7 +113,7 @@ const jsonLdWebApp = {
 const jsonLdOrganization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Neuro Index',
+  name: 'IqHero',
   url: BASE_URL,
   logo: `${BASE_URL}/icon.png`,
   sameAs: [],
@@ -151,7 +156,7 @@ const jsonLdFAQ = {
     {
       '@type': 'Question',
       name: 'Can I take the IQ test on my phone?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Yes, Neuro Index is fully optimized for mobile devices including iPhone, Android, and tablets.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, IqHero is fully optimized for mobile devices including iPhone, Android, and tablets.' },
     },
   ],
 }
@@ -171,12 +176,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#060d1f" />
+        <meta name="theme-color" content="#f5f7fb" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="canonical" href={BASE_URL} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebApp) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }} />

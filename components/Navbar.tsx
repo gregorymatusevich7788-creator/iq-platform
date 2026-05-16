@@ -1,131 +1,76 @@
 'use client'
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
-import { Brain, Menu, X, ChevronRight } from 'lucide-react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '/test', label: 'IQ Test' },
-  { href: '/games', label: 'Games' },
+  { href: '/games', label: 'Brain Games' },
   { href: '/rankings', label: 'Rankings' },
   { href: '/blog', label: 'Blog' },
 ]
 
+function LogoMark({ size = 32 }: { size?: number }) {
+  const r = size / 40
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="40" height="40" rx="10" fill="#2563eb"/>
+      <rect x="10" y="10" width="4" height="20" rx="2" fill="white"/>
+      <circle cx="26" cy="20" r="8" stroke="white" strokeWidth="3.5" fill="none"/>
+      <line x1="31" y1="27" x2="36" y2="32" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const pathname = usePathname()
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [user, setUser] = useState<any>(null)
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => setUser(user))
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
-      setUser(session?.user ?? null)
-    })
-    return () => subscription.unsubscribe()
-  }, [])
-
-  async function handleLogout() {
-    await supabase.auth.signOut()
-    setUser(null)
-  }
-
-  const name = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Account'
-  const initials = name.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()
+  const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border"
-      style={{ background: 'rgba(5,7,13,0.85)', backdropFilter: 'blur(16px)' }}>
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #1d4ed8, #2563eb)', boxShadow: '0 0 16px rgba(37,99,235,0.4)' }}>
-            <Brain size={16} className="text-white" />
-          </div>
-          <span className="font-display font-bold text-lg text-white tracking-wide">
-            Neuro Index
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md" style={{ borderBottom: '1px solid #e5e7eb' }}>
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2.5">
+          <LogoMark size={32} />
+          <span className="font-bold text-lg tracking-tight" style={{ color: '#0f172a', letterSpacing: '-0.02em' }}>
+            Iq<span style={{ color: '#2563eb' }}>Hero</span>
           </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(({ href, label }) => {
-            const active = pathname.startsWith(href)
+            const active = pathname === href || pathname.startsWith(href + '/')
             return (
-              <Link key={href} href={href}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${active ? 'text-white bg-accent/10 border border-accent/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
-                style={active ? { color: '#93bbff' } : {}}>
+              <Link key={href} href={href} className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                style={{ color: active ? '#2563eb' : '#64748b', background: active ? 'rgba(37,99,235,0.08)' : 'transparent' }}>
                 {label}
               </Link>
             )
           })}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
-          {user ? (
-            <>
-              <Link href="/account"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-300 hover:text-white transition-colors"
-                style={{ border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.03)' }}>
-                <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
-                  style={{ background: 'linear-gradient(135deg, #1d4ed8, #2563eb)', color: 'white' }}>
-                  {initials}
-                </div>
-                {name}
-              </Link>
-              <button onClick={handleLogout}
-                className="text-sm text-slate-500 hover:text-white transition-colors font-semibold">
-                Sign Out
-              </button>
-            </>
-          ) : (
-            <>
-              <Link href="/test"
-                className="text-sm font-medium px-4 py-2 rounded-xl text-white transition-all duration-200 hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #3b82f6, #7c3aed)' }}>
-                Take the Free Test →
-              </Link>
-            </>
-          )}
+        <div className="hidden md:flex">
+          <Link href="/test" className="btn-primary px-5 py-2.5 text-sm">Take Free IQ Test →</Link>
         </div>
 
-        <button className="md:hidden text-slate-400 hover:text-white" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+        <button className="md:hidden p-2 rounded-lg" style={{ color: '#64748b' }} onClick={() => setOpen(!open)}>
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden border-t border-border" style={{ background: 'rgba(8,13,23,0.98)' }}>
-          <div className="px-4 py-4 space-y-1">
+      {open && (
+        <div className="md:hidden bg-white animate-slide-down" style={{ borderTop: '1px solid #e5e7eb' }}>
+          <div className="px-4 py-3 space-y-1">
             {NAV_LINKS.map(({ href, label }) => (
-              <Link key={href} href={href} onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 transition-colors">
-                <span className="font-semibold">{label}</span>
-                <ChevronRight size={16} className="text-slate-600" />
+              <Link key={href} href={href} onClick={() => setOpen(false)}
+                className="flex px-4 py-3 rounded-xl text-sm font-medium" style={{ color: '#374151' }}>
+                {label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-border space-y-2">
-              {user ? (
-                <>
-                  <Link href="/account" onClick={() => setMobileOpen(false)}
-                    className="btn-ghost w-full justify-center">My Account</Link>
-                  <button onClick={handleLogout} className="w-full text-slate-500 text-sm py-2">Sign Out</button>
-                </>
-              ) : (
-                <>
-                  <Link href="/test" onClick={() => setMobileOpen(false)}
-                    className="w-full text-center py-3 rounded-xl font-medium text-white text-sm"
-                    style={{ background: 'linear-gradient(135deg, #3b82f6, #7c3aed)' }}>
-                    Take the Free Test →
-                  </Link>
-                </>
-              )}
+            <div className="pt-2">
+              <Link href="/test" onClick={() => setOpen(false)} className="btn-primary w-full text-center py-3 text-sm">
+                Take Free IQ Test →
+              </Link>
             </div>
           </div>
         </div>

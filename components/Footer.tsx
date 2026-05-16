@@ -1,89 +1,86 @@
 import Link from 'next/link'
-import { Brain } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border mt-20" style={{ background: 'var(--bg-900)' }}>
-      <div className="max-w-7xl mx-auto px-4 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
+    <footer style={{ background: '#111827', borderTop: '1px solid #1f2937' }}>
+      <div className="max-w-6xl mx-auto px-4 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #1d4ed8, #2563eb)' }}>
-                <Brain size={16} className="text-white" />
+            <div className="flex items-center gap-2.5 mb-4">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 2C5.8 2 4 3.8 4 6c0 1.4.7 2.6 1.8 3.3-.1.3-.2.7-.2 1.1 0 1.5 1.1 2.8 2.6 3h.1c.7 0 1.3-.2 1.8-.6.5.4 1.1.6 1.8.6h.1c1.5-.2 2.6-1.5 2.6-3 0-.4-.1-.8-.2-1.1C15.3 8.6 16 7.4 16 6c0-2.2-1.8-4-4-4H8z" fill="white" opacity=".9"/>
+                  <circle cx="6.5" cy="5.5" r="1" fill="white"/>
+                  <circle cx="10.5" cy="5.5" r="1" fill="white"/>
+                </svg>
               </div>
-              <span className="font-display font-bold text-white">Neuro Index</span>
-            </Link>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              The most accurate free IQ test online. Trusted by over 2 million Americans.
+              <span className="font-bold text-white text-base">IqHero</span>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: '#9ca3af' }}>
+              America&apos;s most trusted online IQ assessment. Scientifically inspired, trusted by millions.
             </p>
           </div>
 
-          {/* IQ Tests */}
-          <div>
-            <h4 className="font-display font-bold text-white text-sm uppercase tracking-widest mb-4">IQ Tests</h4>
-            <ul className="space-y-3">
-              {[
+          {[
+            {
+              title: 'Assessment',
+              links: [
                 { href: '/test', label: 'Free IQ Test' },
-                { href: '/test', label: 'Sample Questions' },
-                { href: '/faq', label: 'Test FAQ' },
-                { href: '/blog', label: 'Blog Articles' },
-              ].map(({ href, label }) => (
-                <li key={label}>
-                  <Link href={href} className="text-slate-500 hover:text-slate-300 text-sm transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Learn */}
-          <div>
-            <h4 className="font-display font-bold text-white text-sm uppercase tracking-widest mb-4">Learn</h4>
-            <ul className="space-y-3">
-              {[
-                { href: '/blog', label: 'Blog' },
+                { href: '/blog', label: 'Sample Questions' },
                 { href: '/rankings', label: 'IQ Rankings' },
-                { href: '/iq-test-by-state', label: 'IQ by US State' },
                 { href: '/games', label: 'Brain Games' },
-              ].map(({ href, label }) => (
-                <li key={label}>
-                  <Link href={href} className="text-slate-500 hover:text-slate-300 text-sm transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-display font-bold text-white text-sm uppercase tracking-widest mb-4">Company</h4>
-            <ul className="space-y-3">
-              {[
-                { href: '/blog/what-is-iq', label: 'About IQ Testing' },
-                
+              ],
+            },
+            {
+              title: 'Learn',
+              links: [
+                { href: '/blog', label: 'IQ Research Blog' },
+                { href: '/blog/what-is-iq', label: 'What Is IQ?' },
+                { href: '/rankings', label: 'Score Distributions' },
+                { href: '/blog', label: 'Cognitive Science' },
+              ],
+            },
+            {
+              title: 'Company',
+              links: [
                 { href: '/privacy', label: 'Privacy Policy' },
-                { href: "/terms", label: "Terms of Service" },
-                { href: "/terms", label: "Refund Policy" },
-              ].map(({ href, label }) => (
-                <li key={label}>
-                  <Link href={href} className="text-slate-500 hover:text-slate-300 text-sm transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                { href: '/terms', label: 'Terms of Service' },
+                { href: '/terms', label: 'Refund Policy' },
+                { href: '/blog', label: 'About IQ Testing' },
+              ],
+            },
+          ].map(({ title, links }) => (
+            <div key={title}>
+              <h4 className="font-semibold text-white text-sm mb-4">{title}</h4>
+              <ul className="space-y-3">
+                {links.map(({ href, label }) => (
+                  <li key={label}>
+                    <Link
+                      href={href}
+                      className="text-sm transition-colors"
+                      style={{ color: '#9ca3af' }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-600 text-sm">© 2026 Neuro Index. All rights reserved.</p>
-          <p className="text-slate-600 text-xs">
-            For entertainment purposes. Not a clinical assessment.
+        <div
+          className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          style={{ borderTop: '1px solid #1f2937' }}
+        >
+          <p className="text-sm" style={{ color: '#6b7280' }}>
+            © 2026 IqHero. All rights reserved.
+          </p>
+          <p className="text-xs" style={{ color: '#4b5563' }}>
+            For entertainment and educational purposes. Not a clinical IQ assessment.
           </p>
         </div>
       </div>

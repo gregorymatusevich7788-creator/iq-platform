@@ -1,0 +1,5 @@
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+  <rect width="80" height="80" fill="white"/>
+  <line x1="40" y1="16" x2="40" y2="58" stroke="#111827" stroke-width="3"/>
+  <polygon points="32,54 40,70 48,54" fill="#111827"/>
+</svg>

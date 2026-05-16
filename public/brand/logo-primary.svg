@@ -1,0 +1,9 @@
+<svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Mark -->
+  <rect width="40" height="40" rx="10" fill="#2563eb"/>
+  <rect x="10" y="10" width="4" height="20" rx="2" fill="white"/>
+  <circle cx="26" cy="20" r="8" stroke="white" stroke-width="3.5" fill="none"/>
+  <line x1="31" y1="27" x2="36" y2="32" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <!-- Wordmark: IqHero -->
+  <text x="52" y="27" font-family="'Inter', 'SF Pro Display', system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.5" fill="#0f172a">IqHero</text>
+</svg>

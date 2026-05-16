@@ -1,0 +1,23 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" width="240" height="240">
+  <rect width="240" height="240" fill="white"/>
+  <!-- Grid lines -->
+  <line x1="80" y1="0" x2="80" y2="240" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="160" y1="0" x2="160" y2="240" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="0" y1="80" x2="240" y2="80" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="0" y1="160" x2="240" y2="160" stroke="#e5e7eb" stroke-width="1.5"/>
+  <!-- Row 1: circle, square, triangle -->
+  <circle cx="40" cy="40" r="22" fill="none" stroke="#111827" stroke-width="2.5"/>
+  <rect x="18" y="18" width="44" height="44" rx="2" fill="none" stroke="#111827" stroke-width="2.5"/>
+  <polygon points="200,18 222,62 178,62" fill="none" stroke="#111827" stroke-width="2.5"/>
+  <!-- Row 2: filled circle, filled square, filled triangle -->
+  <circle cx="40" cy="120" r="22" fill="#111827"/>
+  <rect x="98" y="98" width="44" height="44" rx="2" fill="#111827"/>
+  <polygon points="200,98 222,142 178,142" fill="#111827"/>
+  <!-- Row 3: double circle, double square, ? -->
+  <circle cx="40" cy="200" r="22" fill="none" stroke="#111827" stroke-width="2.5"/>
+  <circle cx="40" cy="200" r="14" fill="none" stroke="#111827" stroke-width="2"/>
+  <rect x="98" y="178" width="44" height="44" rx="2" fill="none" stroke="#111827" stroke-width="2.5"/>
+  <rect x="104" y="184" width="32" height="32" rx="1" fill="none" stroke="#111827" stroke-width="1.5"/>
+  <!-- Question mark cell -->
+  <text x="200" y="210" text-anchor="middle" font-size="36" font-family="serif" fill="#2563eb" font-weight="bold">?</text>
+</svg>
