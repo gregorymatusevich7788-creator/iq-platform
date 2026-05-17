@@ -206,7 +206,63 @@ function UnlockContent() {
         ⏱ Results expire in {mm}:{ss}
       </div>
 
-      <div className="max-w-lg mx-auto px-4 py-6">
+      <div className="max-w-6xl mx-auto px-4 py-6">
+        <div className="flex gap-8 items-start justify-center">
+          {/* Left sidebar — trust content (hidden on mobile) */}
+          <div className="hidden lg:flex flex-col gap-5 w-72 flex-shrink-0 pt-2">
+
+            {/* IQ fact card */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#2563eb' }}>Did you know?</div>
+              <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
+                Only <strong style={{ color: '#111827' }}>2% of the population</strong> scores above 130 on a standardized IQ test — placing them in the "gifted" category.
+              </p>
+            </div>
+
+            {/* Distribution visual */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#6b7280' }}>IQ distribution</div>
+              {[
+                { label: 'Genius 130+', pct: 2, color: '#2563eb' },
+                { label: 'Above avg 115–130', pct: 14, color: '#3b82f6' },
+                { label: 'Average 85–115', pct: 68, color: '#93c5fd' },
+                { label: 'Below avg 70–85', pct: 14, color: '#dbeafe' },
+                { label: 'Low 70−', pct: 2, color: '#eff6ff' },
+              ].map(({ label, pct, color }) => (
+                <div key={label} className="mb-2">
+                  <div className="flex justify-between text-xs mb-1" style={{ color: '#6b7280' }}>
+                    <span>{label}</span><span>{pct}%</span>
+                  </div>
+                  <div className="h-1.5 rounded-full" style={{ background: '#e5e7eb' }}>
+                    <div className="h-full rounded-full" style={{ width: `${pct === 2 ? 6 : pct}%`, minWidth: pct === 2 ? 8 : 0, background: color }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Famous IQs */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Famous IQ scores</div>
+              {[
+                { name: 'Albert Einstein', iq: '160', icon: '🔬' },
+                { name: 'Marilyn Monroe', iq: '163', icon: '⭐' },
+                { name: 'Elon Musk', iq: '155', icon: '🚀' },
+                { name: 'Average American', iq: '98', icon: '🇺🇸' },
+              ].map(({ name, iq, icon }) => (
+                <div key={name} className="flex items-center justify-between py-2" style={{ borderBottom: '1px solid #f3f4f6' }}>
+                  <div className="flex items-center gap-2">
+                    <span>{icon}</span>
+                    <span className="text-sm" style={{ color: '#374151' }}>{name}</span>
+                  </div>
+                  <span className="text-sm font-bold" style={{ color: '#2563eb' }}>IQ {iq}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* Center — paywall */}
+          <div className="w-full max-w-lg flex-shrink-0">
         {/* Analysis progress */}
         <div className="card p-5 mb-5 animate-fade-in">
           <div className="flex justify-between text-xs mb-2">
@@ -466,6 +522,63 @@ function UnlockContent() {
           </div>
           <p className="text-xs" style={{ color: '#d1d5db' }}>© 2026 IqHero. All rights reserved.</p>
 
+        </div>
+          </div>
+
+          {/* Right sidebar — social proof (hidden on mobile) */}
+          <div className="hidden lg:flex flex-col gap-5 w-72 flex-shrink-0 pt-2">
+
+            {/* Live counter */}
+            <div className="card p-5 text-center">
+              <div className="text-3xl font-bold mb-1" style={{ color: '#111827', fontFamily: "'Lora', serif" }}>2,847,391</div>
+              <div className="text-xs" style={{ color: '#6b7280' }}>Americans tested their IQ</div>
+              <div className="mt-3 flex items-center justify-center gap-1.5">
+                <div className="live-dot" />
+                <span className="text-xs font-medium" style={{ color: '#16a34a' }}>847 unlocked today</span>
+              </div>
+            </div>
+
+            {/* Testimonials */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>What they say</div>
+              {[
+                { name: 'Sarah K.', state: 'California', text: 'My score was 118 — way higher than I expected!', stars: 5 },
+                { name: 'James T.', state: 'Texas', text: 'The cognitive breakdown showed exactly where I am strong.', stars: 5 },
+                { name: 'Emily R.', state: 'New York', text: 'Worth it. The PDF certificate looks totally official.', stars: 5 },
+              ].map(({ name, state, text, stars }) => (
+                <div key={name} className="mb-4 pb-4" style={{ borderBottom: '1px solid #f3f4f6' }}>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg,#2563eb,#1d4ed8)' }}>
+                      {name[0]}
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold" style={{ color: '#111827' }}>{name}</div>
+                      <div className="text-xs" style={{ color: '#9ca3af' }}>{state}</div>
+                    </div>
+                    <div className="ml-auto text-xs" style={{ color: '#f59e0b' }}>{'★'.repeat(stars)}</div>
+                  </div>
+                  <p className="text-xs leading-relaxed" style={{ color: '#6b7280' }}>{text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Security badges */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Security</div>
+              {[
+                { icon: '🔒', text: '256-bit SSL encryption' },
+                { icon: '✅', text: 'PCI DSS compliant' },
+                { icon: '🛡', text: 'No stored card data' },
+                { icon: '↩️', text: 'Cancel anytime' },
+              ].map(({ icon, text }) => (
+                <div key={text} className="flex items-center gap-2 mb-2 text-sm" style={{ color: '#374151' }}>
+                  <span>{icon}</span><span>{text}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
