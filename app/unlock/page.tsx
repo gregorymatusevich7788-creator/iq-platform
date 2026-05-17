@@ -399,7 +399,7 @@ function UnlockContent() {
             {loading ? (
               <><div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> Unlocking results...</>
             ) : (
-              <><Lock size={16} /> Start My 3-Day Trial →</>
+              <><Lock size={16} /> Start My 3-Day Trial → <span style={{ fontSize: "11px", opacity: 0.75, marginLeft: 4 }}>$0.49</span></>
             )}
           </button>
 
@@ -465,20 +465,7 @@ function UnlockContent() {
             <span className="cursor-pointer hover:underline">Refund Policy</span>
           </div>
           <p className="text-xs" style={{ color: '#d1d5db' }}>© 2026 IqHero. All rights reserved.</p>
-          <button
-            onClick={() => { localStorage.clear(); router.push('/test') }}
-            className="text-xs underline mt-2"
-            style={{ color: '#d1d5db' }}
-          >
-            Start a new test
-          </button>
-          <button
-            onClick={() => router.push('/api/dev-access?session=' + sessionId + '&secret=iqhero-test-2026')}
-            className="text-xs underline mt-1"
-            style={{ color: '#d1d5db' }}
-          >
-            [DEV] Skip payment →
-          </button>
+
         </div>
       </div>
     </div>
