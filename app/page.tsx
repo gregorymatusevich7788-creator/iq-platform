@@ -112,7 +112,6 @@ export default function HomePage() {
             <Link
               href="/test"
               className="btn-primary rounded-2xl inline-flex" style={{ fontSize: "1.5rem", padding: "1.5rem 3.5rem", letterSpacing: "-0.01em" }}
-              style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
             >
               Take the Free IQ Test →
             </Link>
