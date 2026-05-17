@@ -259,6 +259,32 @@ function UnlockContent() {
               ))}
             </div>
 
+            {/* Brain fact */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Neuroscience fact</div>
+              <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
+                The human brain has <strong style={{ color: '#111827' }}>86 billion neurons</strong> — each forming up to 10,000 synaptic connections. IQ measures how efficiently these networks process information.
+              </p>
+            </div>
+
+            {/* IQ score scale */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Score scale</div>
+              {[
+                { range: '130+', label: 'Very Superior', color: '#2563eb' },
+                { range: '120–129', label: 'Superior', color: '#3b82f6' },
+                { range: '110–119', label: 'High Average', color: '#60a5fa' },
+                { range: '90–109', label: 'Average', color: '#93c5fd' },
+                { range: '80–89', label: 'Low Average', color: '#bfdbfe' },
+                { range: '70–79', label: 'Borderline', color: '#dbeafe' },
+              ].map(({ range, label, color }) => (
+                <div key={range} className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid #f3f4f6' }}>
+                  <span className="text-xs font-mono font-semibold" style={{ color }}>{range}</span>
+                  <span className="text-xs" style={{ color: '#6b7280' }}>{label}</span>
+                </div>
+              ))}
+            </div>
+
           </div>
 
           {/* Center — paywall */}
