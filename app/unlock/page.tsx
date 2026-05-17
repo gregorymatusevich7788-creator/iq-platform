@@ -285,6 +285,57 @@ function UnlockContent() {
               ))}
             </div>
 
+            {/* Can IQ improve? */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Can IQ improve?</div>
+              {[
+                { label: 'Sleep quality', impact: '+7 pts' },
+                { label: 'Regular exercise', impact: '+5 pts' },
+                { label: 'Brain training', impact: '+4 pts' },
+                { label: 'Meditation', impact: '+3 pts' },
+                { label: 'Healthy diet', impact: '+3 pts' },
+              ].map(({ label, impact }) => (
+                <div key={label} className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid #f3f4f6' }}>
+                  <span className="text-xs" style={{ color: '#374151' }}>{label}</span>
+                  <span className="text-xs font-bold" style={{ color: '#16a34a' }}>{impact}</span>
+                </div>
+              ))}
+              <p className="text-xs mt-3" style={{ color: '#9ca3af' }}>Based on peer-reviewed cognitive science studies.</p>
+            </div>
+
+            {/* IQ vs EQ */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>IQ vs EQ</div>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { title: 'IQ', desc: 'Logical reasoning, pattern recognition, analytical thinking', color: '#2563eb' },
+                  { title: 'EQ', desc: 'Emotional awareness, social skills, empathy, self-control', color: '#7c3aed' },
+                ].map(({ title, desc, color }) => (
+                  <div key={title} className="rounded-xl p-3 text-center" style={{ background: `${color}08`, border: `1px solid ${color}20` }}>
+                    <div className="font-bold text-lg mb-1" style={{ color }}>{title}</div>
+                    <div className="text-xs leading-relaxed" style={{ color: '#6b7280' }}>{desc}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs mt-3 leading-relaxed" style={{ color: '#9ca3af' }}>Research shows IQ predicts academic success, while EQ predicts workplace performance.</p>
+            </div>
+
+            {/* Test methodology */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Our methodology</div>
+              {[
+                { step: '01', text: 'Pattern recognition tasks (Raven matrices)' },
+                { step: '02', text: 'Logical deduction and syllogisms' },
+                { step: '03', text: 'Numerical sequences and operations' },
+                { step: '04', text: 'Spatial rotation and visualization' },
+              ].map(({ step, text }) => (
+                <div key={step} className="flex items-start gap-3 mb-3">
+                  <span className="text-xs font-bold flex-shrink-0 mt-0.5" style={{ color: '#2563eb' }}>{step}</span>
+                  <span className="text-xs leading-relaxed" style={{ color: '#374151' }}>{text}</span>
+                </div>
+              ))}
+            </div>
+
           </div>
 
           {/* Center — paywall */}
