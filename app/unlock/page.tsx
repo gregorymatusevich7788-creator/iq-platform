@@ -466,7 +466,17 @@ function UnlockContent() {
           </div>
           <p className="text-xs" style={{ color: '#d1d5db' }}>© 2026 IqHero. All rights reserved.</p>
           <button
-            onClick={() => { localStorage.clear(); router.push('/test') }}
+            onClick={() => { localStorage.clear(); router.push('/test')
+            }}
+          >
+            Start a new test
+          </button>
+          <button
+            onClick={() => router.push('/api/dev-access?session=' + sessionId + '&secret=iqhero-test-2026')}
+            className="text-xs underline mt-1"
+            style={{ color: '#d1d5db' }}
+          >
+            [DEV] Skip payment }}
             className="text-xs underline mt-2"
             style={{ color: '#d1d5db' }}
           >
