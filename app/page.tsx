@@ -111,7 +111,7 @@ export default function HomePage() {
           <div className="fade-up-3 mb-8">
             <Link
               href="/test"
-              className="btn-primary text-lg px-10 py-4 rounded-2xl inline-flex"
+              className="btn-primary rounded-2xl inline-flex" style={{ fontSize: "1.5rem", padding: "1.5rem 3.5rem", letterSpacing: "-0.01em" }}
               style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
             >
               Take the Free IQ Test →
