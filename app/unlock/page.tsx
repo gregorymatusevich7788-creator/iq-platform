@@ -336,6 +336,64 @@ function UnlockContent() {
               ))}
             </div>
 
+
+            {/* IQ myths */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Common myths debunked</div>
+              {[
+                { myth: '❌ IQ never changes', fact: 'IQ can improve with training, sleep, and exercise.' },
+                { myth: '❌ Only academics have high IQ', fact: 'Entrepreneurs, artists, and athletes often score very high.' },
+                { myth: '❌ IQ tests are biased', fact: 'Modern tests like ours use culture-fair visual patterns.' },
+                { myth: '❌ You either have it or you don't', fact: 'Cognitive skills are trainable — games help measurably.' },
+              ].map(({ myth, fact }) => (
+                <div key={myth} className="mb-3 pb-3" style={{ borderBottom: '1px solid #f9fafb' }}>
+                  <div className="text-xs font-semibold mb-0.5" style={{ color: '#dc2626' }}>{myth}</div>
+                  <div className="text-xs leading-relaxed" style={{ color: '#16a34a' }}>✓ {fact}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* IQ and success */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>IQ and life outcomes</div>
+              {[
+                { label: 'Academic success', r: 0.50 },
+                { label: 'Job performance', r: 0.53 },
+                { label: 'Income level', r: 0.40 },
+                { label: 'Health outcomes', r: 0.30 },
+                { label: 'Creative output', r: 0.35 },
+              ].map(({ label, r }) => (
+                <div key={label} className="mb-2">
+                  <div className="flex justify-between text-xs mb-1">
+                    <span style={{ color: '#6b7280' }}>{label}</span>
+                    <span className="font-semibold" style={{ color: '#2563eb' }}>r={r.toFixed(2)}</span>
+                  </div>
+                  <div className="h-1.5 rounded-full" style={{ background: '#e5e7eb' }}>
+                    <div className="h-full rounded-full" style={{ width: `${r * 100}%`, background: 'linear-gradient(90deg,#2563eb,#3b82f6)' }} />
+                  </div>
+                </div>
+              ))}
+              <p className="text-xs mt-2" style={{ color: '#9ca3af' }}>Pearson correlation coefficients from meta-analyses.</p>
+            </div>
+
+            {/* Countries */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Average IQ by country</div>
+              {[
+                { country: '🇸🇬 Singapore', iq: 108 },
+                { country: '🇭🇰 Hong Kong', iq: 108 },
+                { country: '🇰🇷 South Korea', iq: 106 },
+                { country: '🇯🇵 Japan', iq: 105 },
+                { country: '🇺🇸 United States', iq: 98 },
+                { country: '🌍 World average', iq: 90 },
+              ].map(({ country, iq }) => (
+                <div key={country} className="flex justify-between items-center py-1.5 text-xs" style={{ borderBottom: '1px solid #f9fafb' }}>
+                  <span style={{ color: '#374151' }}>{country}</span>
+                  <span className="font-bold" style={{ color: iq >= 100 ? '#2563eb' : '#6b7280' }}>{iq}</span>
+                </div>
+              ))}
+            </div>
+
           </div>
 
           {/* Center — paywall */}
@@ -653,6 +711,62 @@ function UnlockContent() {
                   <span>{icon}</span><span>{text}</span>
                 </div>
               ))}
+            </div>
+
+
+            {/* What happens after you pay */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>What happens next</div>
+              {[
+                { step: '1', text: 'Instant access — results appear immediately' },
+                { step: '2', text: 'Your IQ score with full percentile ranking' },
+                { step: '3', text: 'Cognitive domain breakdown (4 areas)' },
+                { step: '4', text: 'Download your official PDF certificate' },
+                { step: '5', text: 'Access brain training games library' },
+              ].map(({ step, text }) => (
+                <div key={step} className="flex items-start gap-3 mb-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5"
+                    style={{ background: '#2563eb' }}>
+                    {step}
+                  </div>
+                  <span className="text-xs leading-relaxed" style={{ color: '#374151' }}>{text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Score predict */}
+            <div className="card p-5" style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.05), white)', border: '1.5px solid rgba(37,99,235,0.2)' }}>
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#2563eb' }}>Did you know?</div>
+              <p className="text-sm leading-relaxed mb-3" style={{ color: '#374151' }}>
+                People who complete all 30 questions score on average <strong style={{ color: '#111827' }}>12 points higher</strong> than those who rush through.
+              </p>
+              <p className="text-xs" style={{ color: '#9ca3af' }}>Your careful completion suggests a more accurate result.</p>
+            </div>
+
+            {/* Brain training preview */}
+            <div className="card p-5">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#6b7280' }}>Brain training games included</div>
+              {[
+                { name: '🧩 Pattern Match', desc: 'Improve working memory' },
+                { name: '🔢 Number Sequences', desc: 'Boost numerical reasoning' },
+                { name: '🌀 Rotation Challenge', desc: 'Enhance spatial IQ' },
+                { name: '🔮 Logic Puzzles', desc: 'Sharpen deductive thinking' },
+                { name: '⚡ Speed Matrix', desc: 'Increase processing speed' },
+              ].map(({ name, desc }) => (
+                <div key={name} className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid #f9fafb' }}>
+                  <span className="text-xs font-semibold" style={{ color: '#111827' }}>{name}</span>
+                  <span className="text-xs" style={{ color: '#9ca3af' }}>{desc}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Money back */}
+            <div className="card p-5 text-center" style={{ background: 'rgba(22,163,74,0.04)', border: '1px solid rgba(22,163,74,0.2)' }}>
+              <div className="text-2xl mb-2">✅</div>
+              <div className="font-bold text-sm mb-1" style={{ color: '#15803d' }}>Satisfaction Guaranteed</div>
+              <p className="text-xs leading-relaxed" style={{ color: '#6b7280' }}>
+                Not satisfied? Contact us within 3 days and we'll cancel your subscription — no questions asked. Your score report is yours to keep.
+              </p>
             </div>
 
           </div>
