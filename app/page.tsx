@@ -504,9 +504,9 @@ export default function HomePage() {
             {[
               { name: 'Sarah K.', state: 'California', score: 121, text: 'I scored 121 — way higher than I expected! The cognitive breakdown showed exactly where my strengths are. The PDF certificate looks completely official.' },
               { name: 'James T.', state: 'Texas', score: 108, text: 'Really well-designed test. The visual questions felt like a real IQ assessment. I liked that it showed my percentile rank compared to other Americans.' },
-              { name: 'Emily R.', state: 'New York', score: 134, text: 'Scored 134! The detailed report was fascinating — I knew I was good at patterns but didn't realize my spatial reasoning was that strong.' },
-              { name: 'Michael P.', state: 'Florida', score: 116, text: 'I've taken other IQ tests online and this one felt the most legitimate. The analyzing screen made it feel like real AI was processing my results.' },
-              { name: 'Jessica L.', state: 'Ohio', score: 127, text: 'The brain training games are actually addictive. I've been playing them daily and I can feel my focus improving. Great value with the subscription.' },
+              { name: 'Emily R.', state: 'New York', score: 134, text: 'Scored 134! The detailed report was fascinating — I knew I was good at patterns but did not realize my spatial reasoning was that strong.' },
+              { name: 'Michael P.', state: 'Florida', score: 116, text: 'I have taken other IQ tests online and this one felt the most legitimate. The analyzing screen made it feel like real AI was processing my results.' },
+              { name: 'Jessica L.', state: 'Ohio', score: 127, text: 'The brain training games are actually addictive. I have been playing them daily and I can feel my focus improving. Great value with the subscription.' },
               { name: 'David M.', state: 'Georgia', score: 99, text: 'Scored right at average which surprised me — I thought I'd be higher. But the breakdown showed I'm strong in logic and weaker in spatial. Very useful.' },
             ].map(({ name, state, score, text }) => (
               <div key={name} className="card p-5">
