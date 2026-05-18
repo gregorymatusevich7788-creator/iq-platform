@@ -384,7 +384,7 @@ export default function HomePage() {
               { name: 'Elon Musk', iq: 155, emoji: '🚀', field: 'Technology' },
               { name: 'Bill Gates', iq: 151, emoji: '💻', field: 'Computing' },
               { name: 'Average American', iq: 98, emoji: '🇺🇸', field: 'Population avg' },
-              { name: 'You', iq: '???', emoji: '🧠', field: 'Take the test!' },
+              { name: 'You', iq: '???' as string | number, emoji: '🧠', field: 'Take the test!' },
             ].map(({ name, iq, emoji, field }) => (
               <div key={name} className="card p-4 text-center" style={name === 'You' ? { border: '2px solid #2563eb', background: 'rgba(37,99,235,0.03)' } : {}}>
                 <div className="text-2xl mb-2">{emoji}</div>
