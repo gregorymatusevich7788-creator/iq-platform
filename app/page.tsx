@@ -53,12 +53,12 @@ const TESTIMONIALS = [
 ]
 
 const BENEFITS = [
-  { icon: '📊', title: 'Your Exact IQ Score', desc: 'A precise score calibrated against 2.8 million Americans. Includes your national percentile rank and score category.' },
-  { icon: '📄', title: 'Official PDF Certificate', desc: 'A printable certificate with your name, score, date, and session ID. Shareable on LinkedIn or with friends.' },
-  { icon: '🧩', title: 'Cognitive Domain Breakdown', desc: 'Detailed scores across 4 domains: Pattern Recognition, Logical Reasoning, Numerical Ability, and Spatial Intelligence.' },
-  { icon: '📈', title: 'Bell Curve Comparison', desc: 'See exactly where you land on the normal distribution — with comparisons to historical geniuses and the average American.' },
-  { icon: '🎮', title: 'Brain Training Games', desc: 'Unlimited access to scientifically designed cognitive exercises targeting memory, focus, processing speed, and reasoning.' },
-  { icon: '⚡', title: 'Priority Support', desc: 'Questions about your score? Get fast-track responses from our cognitive assessment team within hours.' },
+  { icon: '#', title: 'Your Exact IQ Score', desc: 'A precise score calibrated against 2.8 million Americans. Includes your national percentile rank and score category.' },
+  { icon: 'PDF', title: 'Official PDF Certificate', desc: 'A printable certificate with your name, score, date, and session ID. Shareable on LinkedIn or with friends.' },
+  { icon: '4x', title: 'Cognitive Domain Breakdown', desc: 'Detailed scores across 4 domains: Pattern Recognition, Logical Reasoning, Numerical Ability, and Spatial Intelligence.' },
+  { icon: '∿', title: 'Bell Curve Comparison', desc: 'See exactly where you land on the normal distribution — with comparisons to historical geniuses and the average American.' },
+  { icon: '▷', title: 'Brain Training Games', desc: 'Unlimited access to scientifically designed cognitive exercises targeting memory, focus, processing speed, and reasoning.' },
+  { icon: '★', title: 'Priority Support', desc: 'Questions about your score? Get fast-track responses from our cognitive assessment team within hours.' },
 ]
 
 export default function HomePage() {
@@ -241,7 +241,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-5">
             {BENEFITS.map(({ icon, title, desc }) => (
               <div key={title} className="card p-5 flex items-start gap-4">
-                <span className="text-2xl flex-shrink-0 mt-0.5">{icon}</span>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style={{ background: "#2563eb" }}>{icon}</div>
                 <div>
                   <div className="font-bold text-base mb-1" style={{ color: '#111827' }}>{title}</div>
                   <div className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{desc}</div>
@@ -309,13 +309,14 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { icon: '🧠', title: 'Cognitive Science', desc: 'Based on established psychometric research' },
-              { icon: '🔒', title: '100% Private', desc: 'Your data is never sold or shared' },
-              { icon: '⚡', title: 'Instant Results', desc: 'Get your score immediately after completion' },
-              { icon: '📊', title: 'Detailed Report', desc: 'Full breakdown across 4 cognitive domains' },
-            ].map(({ icon, title, desc }) => (
+              { color: '#2563eb', label: 'IQ', title: 'Cognitive Science', desc: 'Based on established psychometric research' },
+              { color: '#16a34a', label: '🔒', title: '100% Private', desc: 'Your data is never sold or shared' },
+              { color: '#f59e0b', label: '⚡', title: 'Instant Results', desc: 'Get your score immediately after completion' },
+              { color: '#7c3aed', label: '≡', title: 'Detailed Report', desc: 'Full breakdown across 4 cognitive domains' },
+            ].map(({ color, label, title, desc }) => (
               <div key={title} className="card p-5 text-center">
-                <div className="text-2xl mb-3">{icon}</div>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3 text-sm font-bold text-white"
+                  style={{ background: color }}>{label}</div>
                 <div className="font-semibold text-sm mb-1" style={{ color: '#111827' }}>{title}</div>
                 <div className="text-xs leading-relaxed" style={{ color: '#6b7280' }}>{desc}</div>
               </div>

@@ -11,10 +11,10 @@ export default function Footer() {
                 className="w-8 h-8 rounded-lg flex items-center justify-center"
                 style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)' }}
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M8 2C5.8 2 4 3.8 4 6c0 1.4.7 2.6 1.8 3.3-.1.3-.2.7-.2 1.1 0 1.5 1.1 2.8 2.6 3h.1c.7 0 1.3-.2 1.8-.6.5.4 1.1.6 1.8.6h.1c1.5-.2 2.6-1.5 2.6-3 0-.4-.1-.8-.2-1.1C15.3 8.6 16 7.4 16 6c0-2.2-1.8-4-4-4H8z" fill="white" opacity=".9"/>
-                  <circle cx="6.5" cy="5.5" r="1" fill="white"/>
-                  <circle cx="10.5" cy="5.5" r="1" fill="white"/>
+                <svg width="16" height="16" viewBox="0 0 40 40" fill="none">
+                  <rect x="10" y="10" width="4" height="20" rx="2" fill="white"/>
+                  <circle cx="26" cy="20" r="8" stroke="white" strokeWidth="3.5" fill="none"/>
+                  <line x1="31" y1="27" x2="36" y2="32" stroke="white" strokeWidth="3" strokeLinecap="round"/>
                 </svg>
               </div>
               <span className="font-bold text-white text-base">IqHero</span>
