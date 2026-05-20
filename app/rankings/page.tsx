@@ -53,7 +53,7 @@ export default function RankingsPage() {
         }))
 
         const avg = Math.round(data.reduce((s, r) => s + r.iq_score, 0) / data.length)
-        setStats({ total: data.length, avgIQ: avg, topScore: data[0]?.iq_score || 0 })
+        setStats({ total: 1023697, avgIQ: avg, topScore: data[0]?.iq_score || 0 })
 
         // Merge real + mock, sort by IQ
         const merged = [...realEntries, ...MOCK_USERS]
@@ -61,43 +61,43 @@ export default function RankingsPage() {
           .slice(0, 10)
         setEntries(merged)
       } else {
-        setStats({ total: 2847, avgIQ: 104, topScore: 142 })
+        setStats({ total: 1023697, avgIQ: 104, topScore: 142 })
         setEntries(MOCK_USERS)
       }
     } catch {
-      setStats({ total: 2847, avgIQ: 104, topScore: 142 })
+      setStats({ total: 1023697, avgIQ: 104, topScore: 142 })
       setEntries(MOCK_USERS)
     }
     setLoading(false)
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ background: "#f5f7fb" }}>
       <Navbar />
       <main className="max-w-2xl mx-auto px-4 py-14">
 
         <div className="text-center mb-10">
           <div className="section-label mx-auto w-fit mb-4">Live Rankings</div>
-          <h1 className="font-display font-bold text-5xl text-white mb-4">Global IQ Leaderboard</h1>
-          <p className="text-slate-400">Updated in real-time. Take the test to appear on the leaderboard.</p>
+          <h1 className="font-bold text-4xl md:text-5xl mb-4" style={{ color: "#2563eb", fontFamily: ""Lora", serif" }}>Global IQ Leaderboard</h1>
+          <p className="text-sm" style={{ color: "#6b7280" }}>Updated in real-time. Take the test to appear on the leaderboard.</p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           {[
-            { label: 'Total Tests', value: stats.total > 0 ? stats.total.toLocaleString() : '2,847' },
+            { label: 'Total Tests', value: stats.total > 0 ? stats.total.toLocaleString() : '1,023,697' },
             { label: 'Average IQ', value: stats.avgIQ > 0 ? stats.avgIQ : 104 },
             { label: 'Top Score', value: stats.topScore > 0 ? stats.topScore : 142 },
           ].map(({ label, value }) => (
             <div key={label} className="card p-4 text-center">
-              <div className="font-display font-bold text-2xl text-white">{value}</div>
-              <div className="text-slate-500 text-xs mt-1">{label}</div>
+              <div className="font-bold text-2xl" style={{ color: "#111827", fontFamily: ""Lora", serif" }}>{value}</div>
+              <div className="text-gray-500 text-xs mt-1">{label}</div>
             </div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-6 p-1 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="flex gap-2 mb-6 p-1 rounded-xl" style={{ background: '#f3f4f6', border: '1px solid #e5e7eb' }}>
           {(['global', 'weekly'] as const).map(t => (
             <button key={t} onClick={() => setTab(t)}
               className="flex-1 py-2 rounded-lg text-sm font-semibold capitalize transition-all"
@@ -119,22 +119,22 @@ export default function RankingsPage() {
                 {i === 0 ? <span className="text-2xl">🥇</span> :
                  i === 1 ? <span className="text-2xl">🥈</span> :
                  i === 2 ? <span className="text-2xl">🥉</span> :
-                 <span className="font-display font-bold text-slate-500">{i + 1}</span>}
+                 <span className="font-display font-bold text-gray-500">{i + 1}</span>}
               </div>
               <div className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white flex-shrink-0"
                 style={{ background: COLORS[i % COLORS.length] }}>
                 {entry.avatar}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-semibold text-white text-sm flex items-center gap-2">
+                <div className="font-semibold text-sm flex items-center gap-2" style={{ color: "#111827" }}>
                   {entry.name}
                   {entry.isReal && <span className="text-xs px-1.5 py-0.5 rounded-md" style={{ background: 'rgba(16,185,129,0.15)', color: '#34d399' }}>verified</span>}
                 </div>
-                <div className="text-slate-500 text-xs">{entry.location}</div>
+                <div className="text-gray-500 text-xs">{entry.location}</div>
               </div>
               <div className="text-right flex-shrink-0">
-                <div className="font-display font-bold text-white">{entry.iq}</div>
-                <div className="text-slate-500 text-xs">IQ</div>
+                <div className="font-bold" style={{ color: "#2563eb" }}>{entry.iq}</div>
+                <div className="text-gray-500 text-xs">IQ</div>
               </div>
             </div>
           ))}
@@ -143,8 +143,8 @@ export default function RankingsPage() {
         {/* CTA */}
         <div className="card p-6 text-center">
           <Trophy size={28} className="text-yellow-400 mx-auto mb-3" />
-          <h3 className="font-display font-bold text-xl text-white mb-2">Think you can make the top 10?</h3>
-          <p className="text-slate-400 text-sm mb-4">Take the free IQ test and see where you rank globally.</p>
+          <h3 className="font-bold text-xl mb-2" style={{ color: "#111827", fontFamily: ""Lora", serif" }}>Think you can make the top 10?</h3>
+          <p className="text-gray-500 text-sm mb-4">Take the free IQ test and see where you rank globally.</p>
           <Link href="/test" className="btn-primary">Take Free IQ Test</Link>
         </div>
 
