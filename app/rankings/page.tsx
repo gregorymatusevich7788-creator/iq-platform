@@ -119,7 +119,7 @@ export default function RankingsPage() {
                 {i === 0 ? <span className="text-2xl">🥇</span> :
                  i === 1 ? <span className="text-2xl">🥈</span> :
                  i === 2 ? <span className="text-2xl">🥉</span> :
-                 <span className="font-display font-bold text-gray-500">{i + 1}</span>}
+                 <span className="font-bold" style={{ color: "#9ca3af" }}>{i + 1}</span>
               </div>
               <div className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-white flex-shrink-0"
                 style={{ background: COLORS[i % COLORS.length] }}>

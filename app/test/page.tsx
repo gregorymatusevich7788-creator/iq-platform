@@ -181,6 +181,7 @@ export default function TestPage() {
   // email state removed
   // pendingSession removed
   const [toast, setToast] = useState('')
+  const [interstitial, setInterstitial] = useState<null | { title: string; stat: string; sub: string; color: string }>(null)
   const [fadeKey, setFadeKey] = useState(0)
 
   useEffect(() => {
@@ -189,8 +190,10 @@ export default function TestPage() {
   }, [startTime])
 
   useEffect(() => {
-    if (current === 12) { setToast('Strong performance detected! Keep going.'); setTimeout(() => setToast(''), 4000) }
-    if (current === 20) { setToast('Almost there — final stretch!'); setTimeout(() => setToast(''), 4000) }
+    if (current === 8) setInterstitial({ title: "You're Faster Than", stat: '91%', sub: 'of Test Participants! Keep it up.', color: '#2563eb' })
+    if (current === 15) setInterstitial({ title: 'Your IQ Score is Higher Than', stat: '87%', sub: "of Today's Test Takers", color: '#16a34a' })
+    if (current === 22) setInterstitial({ title: 'Outstanding! Your Logic Score', stat: 'Top 5%', sub: 'High logical intelligence detected.', color: '#7c3aed' })
+    if (current === 27) setInterstitial({ title: 'The Finish Line is in Sight!', stat: '3 Left', sub: "You've completed 90% of the assessment.", color: '#f59e0b' })
   }, [current])
 
   const formatTime = (s: number) => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`
@@ -199,7 +202,33 @@ export default function TestPage() {
     if (selected !== null) return
     setSelected(optionIndex)
 
-    const q = questions[current]
+    // Show interstitial screen
+  if (interstitial) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 animate-fade-in"
+        style={{ background: '#f5f7fb' }}>
+        <div className="w-full max-w-sm text-center">
+          <div className="text-6xl mb-6">
+            {interstitial.color === '#2563eb' ? '🚀' : interstitial.color === '#16a34a' ? '🏆' : interstitial.color === '#7c3aed' ? '🧠' : '🎯'}
+          </div>
+          <h2 className="font-bold text-2xl mb-2" style={{ color: '#111827', fontFamily: "'Lora', serif" }}>
+            {interstitial.title}
+          </h2>
+          <div className="font-bold my-4" style={{ fontSize: '4rem', lineHeight: 1, color: interstitial.color, fontFamily: "'Lora', serif" }}>
+            {interstitial.stat}
+          </div>
+          <p className="text-base mb-8" style={{ color: '#6b7280' }}>{interstitial.sub}</p>
+          <button
+            onClick={() => setInterstitial(null)}
+            className="btn-primary w-full py-4 text-base rounded-2xl">
+            Continue
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  const q = questions[current]
     const isCorrect = optionIndex === (q.correctAnswer ?? q.correct)
     const newAnswer: UserAnswer = { questionId: q.id, selectedOption: optionIndex, isCorrect }
     const updatedAnswers = [...answers, newAnswer]
@@ -250,6 +279,32 @@ export default function TestPage() {
     matrix: 'Matrix', pattern: 'Pattern', sequence: 'Sequence', odd: 'Odd One Out', rotation: 'Rotation', logic: 'Logic', text: 'Reasoning'
   }
 
+
+  // Show interstitial screen
+  if (interstitial) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 animate-fade-in"
+        style={{ background: '#f5f7fb' }}>
+        <div className="w-full max-w-sm text-center">
+          <div className="text-6xl mb-6">
+            {interstitial.color === '#2563eb' ? '🚀' : interstitial.color === '#16a34a' ? '🏆' : interstitial.color === '#7c3aed' ? '🧠' : '🎯'}
+          </div>
+          <h2 className="font-bold text-2xl mb-2" style={{ color: '#111827', fontFamily: "'Lora', serif" }}>
+            {interstitial.title}
+          </h2>
+          <div className="font-bold my-4" style={{ fontSize: '4rem', lineHeight: 1, color: interstitial.color, fontFamily: "'Lora', serif" }}>
+            {interstitial.stat}
+          </div>
+          <p className="text-base mb-8" style={{ color: '#6b7280' }}>{interstitial.sub}</p>
+          <button
+            onClick={() => setInterstitial(null)}
+            className="btn-primary w-full py-4 text-base rounded-2xl">
+            Continue
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   const q = questions[current]
   const hasImageOptions = q.options.some(o => o.image)
